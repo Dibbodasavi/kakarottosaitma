@@ -24,7 +24,7 @@ a,
   transition: all 300ms ease;
 }
 
-/* Desktop Nav */
+/* ------------------------- Desktop Nav ------------------------------------------- */
 
 nav,
 .nav-links {
@@ -64,7 +64,7 @@ a:hover {
   max-height: 15rem;
 }
 
-/* Hamburger-Menu */
+/* ------------------------- Hamburger-Menu ------------------------------------------- */
 
 #hamburger-nav {
   display: none;
@@ -134,7 +134,7 @@ a:hover {
   transform: none;
 }
 
-/* SECTIONS */
+/* ------------------------------------------- SECTIONS  -------------------------------------------*/
 
 section {
   padding-top: 4vh;
@@ -149,7 +149,7 @@ section {
   justify-content: center;
 }
 
-/* PROFILE SECTION */
+/* ------------------------------------------- PROFILE SECTION ------------------------------------------- */
 
 #profile {
   display: flex;
@@ -206,7 +206,7 @@ section {
   height: 2rem;
 }
 
-/* BUTTONS */
+/* ------------------------------------------- BUTTONS ------------------------------------------- */
 
 .btn-container {
   display: flex;
@@ -254,7 +254,7 @@ section {
   gap: 1rem;
 }
 
-/* ABOUT SECTION */
+/* ------------------------------------------- ABOUT SECTION ------------------------------------------- */
 
 #about {
   position: relative;
@@ -346,7 +346,7 @@ article .icon {
   cursor: default;
 }
 
-/* PROJECTS SECTION */
+/* ------------------------------------------- PROJECTS SECTION ------------------------------------------- */
 
 #projects {
   position: relative;
@@ -373,7 +373,7 @@ article .icon {
   border-color: rgb(163, 163, 163);
 }
 
-/* CONTACT */
+/*-------------------------------------------  CONTACT ------------------------------------------- */
 
 #contact {
   display: flex;
