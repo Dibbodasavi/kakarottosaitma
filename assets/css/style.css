@@ -335,21 +335,22 @@ main {
 
 .sidebar {
   margin-bottom: 15px;
-  max-height: 112px;
+  max-height: 84px;
   overflow: hidden;
   transition: var(--transition-2);
 }
 
 .sidebar.active {
-  max-height: 405px;
+  max-height: 604px;
 }
 
 .sidebar-info {
   position: relative;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 15px;
+  flex-direction: column;
 }
 
 .avatar-box {
@@ -1981,7 +1982,7 @@ textarea.form-input::-webkit-resizer {
     max-height: max-content;
     height: 100%;
     margin-bottom: 0;
-    padding-top: 60px;
+    padding-top: 25px;
     z-index: 1;
   }
 
@@ -1990,7 +1991,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .avatar-box img {
-    width: 150px;
+    width: 220px;
   }
 
   .info-content .name {
@@ -1999,7 +2000,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .info-content .title {
-    margin: auto;
+    margin: 10% 0% 0% 0%;
   }
 
   .info_more-btn {
