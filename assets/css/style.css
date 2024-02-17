@@ -449,9 +449,23 @@ main {
   margin-bottom: 2px;
 }
 
-.contact-info :is(.contact-link, time, address) {
+.contact-info :is(.contact-link, time, address, ) {
   color: var(--white-2);
   font-size: var(--fs-7);
+}
+
+#Resume {
+  color: var(--white-2);
+  background-color: rgb(6, 51, 82);
+  border-radius: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: center;
+}
+
+#Resume:hover {
+  color: var(--orange-yellow-crayola);
+  background-color: rgba(7, 70, 80, 0.821);
 }
 
 .contact-info address {
@@ -473,7 +487,7 @@ main {
 }
 
 .social-item .social-link:hover {
-  color: var(--light-gray);
+  color: var(--orange-yellow-crayola);
 }
 
 /*-----------------------------------*\
@@ -2014,7 +2028,7 @@ textarea.form-input::-webkit-resizer {
 
   .separator:last-of-type {
     margin: 15px 0;
-    opacity: 0;
+    opacity: 100;
   }
 
   .social-list {
