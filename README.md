@@ -1,7 +1,7 @@
-# This is my personal portfolio Wesite.
+# This is my personal portfolio website.
 
 ```bash
-www.dibbodasavi.tech
+https://dibbodasavi.github.io/kakarottosaitma/
 ```
 
 Do let me know if you know somehow I can improve it.
