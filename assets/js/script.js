@@ -1,119 +1,107 @@
 'use strict';
 
+// Your existing JavaScript code here
 
-
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const filterFunc = function (selectedValue) {
-
-  for (let i = 0; i < filterItems.length; i++) {
-
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
+// Profile Selection Logic
+const profileConfig = {
+  recruiter: {
+    navItems: [
+      { text: 'Graphics Projects', page: 'graphics' },
+      { text: 'Video Projects', page: 'videos' },
+      { text: 'Reels', page: 'reels' },
+      { text: 'Skills', page: 'skills' },
+      { text: 'Clients', page: 'clients' },
+      { text: 'Hire Me', page: 'contact' }
+    ]
+  },
+  academic: {
+    navItems: [
+      { text: 'Education', page: 'education' },
+      { text: 'Research', page: 'research' }
+    ]
+  },
+  explorer: {
+    navItems: [
+      { text: 'Hobbies', page: 'hobbies' },
+      { text: 'Travel Diaries', page: 'travel' },
+      { text: 'Social Media', page: 'social' }
+    ]
   }
+};
 
+// Check if first visit
+if (!localStorage.getItem('profileSelected')) {
+  document.getElementById('profileSelector').classList.remove('hidden');
 }
 
-// add event in all filter button items for large screen
-let lastClickedBtn = filterBtn[0];
+function selectProfile(profile) {
+  localStorage.setItem('profileSelected', profile);
+  document.getElementById('profileSelector').classList.add('hidden');
+  updateNavigation(profile);
+  updateVisibleSections(profile);
+}
 
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    filterFunc(selectedValue);
-
-    lastClickedBtn.classList.remove("active");
-    this.classList.add("active");
-    lastClickedBtn = this;
-
+function updateNavigation(profile) {
+  const navList = document.getElementById('dynamicNav');
+  navList.innerHTML = '';
+  
+  profileConfig[profile].navItems.forEach(item => {
+    const li = document.createElement('li');
+    li.className = 'navbar-item';
+    li.innerHTML = `
+      <button class="navbar-link" data-nav-link>${item.text}</button>
+    `;
+    navList.appendChild(li);
   });
 
+  // Reattach navigation event listeners
+  const navigationLinks = document.querySelectorAll("[data-nav-link]");
+  const pages = document.querySelectorAll("[data-page]");
+
+  navigationLinks.forEach((link, i) => {
+    link.addEventListener("click", function () {
+      pages.forEach((page, j) => {
+        if (this.innerHTML.toLowerCase() === page.dataset.page) {
+          pages[j].classList.add("active");
+          navigationLinks[j].classList.add("active");
+          window.scrollTo(0, 0);
+        } else {
+          pages[j].classList.remove("active");
+          navigationLinks[j].classList.remove("active");
+        }
+      });
+    });
+  });
 }
 
-
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
+function updateVisibleSections(profile) {
+  const allSections = document.querySelectorAll('[data-profile]');
+  allSections.forEach(section => {
+    if (section.dataset.profile === profile) {
+      section.style.display = 'block';
     } else {
-      formBtn.setAttribute("disabled", "");
+      section.style.display = 'none';
     }
-
   });
 }
 
-
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
-  });
+function toggleProfileMenu() {
+  const menu = document.getElementById('profileMenu');
+  menu.classList.toggle('active');
 }
+
+// Initialize with saved profile or default to recruiter
+const savedProfile = localStorage.getItem('profileSelected') || 'recruiter';
+updateNavigation(savedProfile);
+updateVisibleSections(savedProfile);
+
+// Close profile menu when clicking outside
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('profileMenu');
+  const btn = document.querySelector('.profile-switcher-btn');
+  if (!menu.contains(e.target) && !btn.contains(e.target)) {
+    menu.classList.remove('active');
+  }
+});
+
+// Your existing JavaScript code continues here
