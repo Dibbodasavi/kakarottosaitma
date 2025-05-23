@@ -1,7 +1,5 @@
 'use strict';
 
-// Your existing JavaScript code here
-
 // Profile Selection Logic
 const profileConfig = {
   recruiter: {
@@ -58,16 +56,16 @@ function updateNavigation(profile) {
   const navigationLinks = document.querySelectorAll("[data-nav-link]");
   const pages = document.querySelectorAll("[data-page]");
 
-  navigationLinks.forEach((link, i) => {
+  navigationLinks.forEach((link) => {
     link.addEventListener("click", function () {
-      pages.forEach((page, j) => {
+      pages.forEach((page) => {
         if (this.innerHTML.toLowerCase() === page.dataset.page) {
-          pages[j].classList.add("active");
-          navigationLinks[j].classList.add("active");
+          page.classList.add("active");
+          this.classList.add("active");
           window.scrollTo(0, 0);
         } else {
-          pages[j].classList.remove("active");
-          navigationLinks[j].classList.remove("active");
+          page.classList.remove("active");
+          this.classList.remove("active");
         }
       });
     });
@@ -104,4 +102,10 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Your existing JavaScript code continues here
+// Sidebar toggle functionality
+const sidebar = document.querySelector("[data-sidebar]");
+const sidebarBtn = document.querySelector("[data-sidebar-btn]");
+
+sidebarBtn.addEventListener("click", function () {
+  sidebar.classList.toggle("active");
+});

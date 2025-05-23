@@ -15,7 +15,7 @@
 
   <body>
     <!-- Profile Selector Modal -->
-    <div id="profileSelector" class="profile-selector">
+    <div id="profileSelector" class="profile-selector hidden">
       <div class="profile-selector-content">
         <h2>Who are you?</h2>
         <div class="profile-buttons">
@@ -49,12 +49,17 @@
     </div>
 
     <main>
+      <!-- Sidebar -->
       <aside class="sidebar" data-sidebar>
         <div class="sidebar-info">
-          <img src="assets/Dibboslogo1.svg" alt="Dibbo logo" width="200vh" />
           <figure class="avatar-box">
             <img src="./assets/images/profile-pic.jpg" alt="Dibbo Das Avi" width="180" />
           </figure>
+
+          <div class="info-content">
+            <h1 class="name" title="Dibbo Das Avi">Dibbo Das Avi</h1>
+            <p class="title">Graphic Designer & Developer</p>
+          </div>
 
           <button class="info_more-btn" data-sidebar-btn>
             <span>Show Contacts</span>
@@ -70,10 +75,9 @@
               <div class="icon-box">
                 <ion-icon name="mail-outline"></ion-icon>
               </div>
-
               <div class="contact-info">
                 <p class="contact-title">Email</p>
-                <a href="mailto:dibbodasavi@gmail.com" class="contact-link">Dibbodasavi@gmail.com</a>
+                <a href="mailto:dibbodasavi@gmail.com" class="contact-link">dibbodasavi@gmail.com</a>
               </div>
             </li>
 
@@ -81,7 +85,6 @@
               <div class="icon-box">
                 <ion-icon name="phone-portrait-outline"></ion-icon>
               </div>
-
               <div class="contact-info">
                 <p class="contact-title">Phone</p>
                 <a href="tel:+8801871126615" class="contact-link">+880 18711 26615</a>
@@ -92,10 +95,9 @@
               <div class="icon-box">
                 <ion-icon name="calendar-outline"></ion-icon>
               </div>
-
               <div class="contact-info">
                 <p class="contact-title">Resume</p>
-                <a href="https://drive.google.com/file/d/1eEe2yB1J_VXSkPptFfptkTh-qnT-tspw/view?usp=sharing" class="contact-link" id="Resume">Dibbo's CV.pdf</a>
+                <a href="assets/Dibbo's New CV.pdf" class="contact-link">Download CV</a>
               </div>
             </li>
 
@@ -103,7 +105,6 @@
               <div class="icon-box">
                 <ion-icon name="location-outline"></ion-icon>
               </div>
-
               <div class="contact-info">
                 <p class="contact-title">Location</p>
                 <address>Bangladesh</address>
@@ -115,17 +116,15 @@
 
           <ul class="social-list">
             <li class="social-item">
-              <a href="https://www.facebook.com/dibbodasavi" class="social-link" target="_blank">
+              <a href="https://www.facebook.com/dibbodasavi" class="social-link">
                 <ion-icon name="logo-facebook"></ion-icon>
               </a>
             </li>
-
             <li class="social-item">
               <a href="https://www.instagram.com/kakarottosaitama" class="social-link">
                 <ion-icon name="logo-instagram"></ion-icon>
               </a>
             </li>
-
             <li class="social-item">
               <a href="https://www.behance.net/dibbodasavi" class="social-link">
                 <ion-icon name="logo-behance"></ion-icon>
@@ -141,30 +140,129 @@
       </aside>
 
       <div class="main-content">
+        <!-- Navigation -->
         <nav class="navbar">
           <ul class="navbar-list" id="dynamicNav">
             <!-- Navigation items will be populated by JavaScript -->
           </ul>
         </nav>
 
-        <article class="about active" data-page="about">
-          <!-- Your existing about content -->
+        <!-- Recruiter Profile Content -->
+        <article class="graphics" data-page="graphics" data-profile="recruiter">
+          <header>
+            <h2 class="h2 article-title">Graphics Projects</h2>
+          </header>
+
+          <section class="project-grid">
+            <!-- Add your graphics projects here -->
+            <div class="project-card">
+              <img src="./assets/images/project-1.jpg" alt="Graphics Project 1">
+              <div class="project-card-content">
+                <h3>Project Title</h3>
+                <p>Project description goes here</p>
+              </div>
+            </div>
+            <!-- Add more project cards as needed -->
+          </section>
         </article>
 
-        <article class="resume" data-page="resume">
-          <!-- Your existing resume content -->
+        <article class="videos" data-page="videos" data-profile="recruiter">
+          <header>
+            <h2 class="h2 article-title">Video Projects</h2>
+          </header>
+
+          <section class="project-grid">
+            <!-- Add your video projects here -->
+          </section>
         </article>
 
-        <article class="portfolio" data-page="portfolio" data-profile="recruiter">
-          <!-- Your existing portfolio content -->
+        <!-- Academic Profile Content -->
+        <article class="education" data-page="education" data-profile="academic">
+          <header>
+            <h2 class="h2 article-title">Education</h2>
+          </header>
+
+          <section class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-content">
+                <h3>Degree Title</h3>
+                <p>University Name</p>
+                <p>2018 - 2022</p>
+              </div>
+            </div>
+            <!-- Add more education items -->
+          </section>
         </article>
 
-        <article class="blog" data-page="blog">
-          <!-- Your existing blog content -->
+        <article class="research" data-page="research" data-profile="academic">
+          <header>
+            <h2 class="h2 article-title">Research</h2>
+          </header>
+
+          <section class="research-list">
+            <div class="research-paper">
+              <h3>Paper Title</h3>
+              <p class="authors">Authors: Dibbo Das Avi, et al.</p>
+              <p class="abstract">Abstract: Your paper abstract goes here...</p>
+              <a href="#" class="doi">DOI: 10.1234/example</a>
+            </div>
+            <!-- Add more research papers -->
+          </section>
         </article>
 
+        <!-- Explorer Profile Content -->
+        <article class="hobbies" data-page="hobbies" data-profile="explorer">
+          <header>
+            <h2 class="h2 article-title">Hobbies</h2>
+          </header>
+
+          <section class="hobby-content">
+            <h3>Classical Music</h3>
+            <p>Details about your musical background and flute playing...</p>
+            <!-- Add more hobby content -->
+          </section>
+        </article>
+
+        <article class="travel" data-page="travel" data-profile="explorer">
+          <header>
+            <h2 class="h2 article-title">Travel Diaries</h2>
+          </header>
+
+          <section class="project-grid">
+            <!-- Add your travel content here -->
+          </section>
+        </article>
+
+        <article class="social" data-page="social" data-profile="explorer">
+          <header>
+            <h2 class="h2 article-title">Social Media Highlights</h2>
+          </header>
+
+          <section class="social-grid">
+            <!-- Add your social media embeds here -->
+          </section>
+        </article>
+
+        <!-- Contact section (available in all profiles) -->
         <article class="contact" data-page="contact">
-          <!-- Your existing contact content -->
+          <header>
+            <h2 class="h2 article-title">Contact Me</h2>
+          </header>
+
+          <section class="contact-form">
+            <h3 class="h3 form-title">Contact Form</h3>
+            <form action="#" class="form" data-form>
+              <div class="input-wrapper">
+                <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+              </div>
+              <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+              <button class="form-btn" type="submit" disabled data-form-btn>
+                <ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+            </form>
+          </section>
         </article>
       </div>
     </main>
